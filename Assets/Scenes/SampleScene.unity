@@ -776,7 +776,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9da256c216ce864390173c2468819be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bola: {fileID: 9082760650132558314, guid: 744033d0b030c8c499525d13b37294fd, type: 3}
+  MinhasEsferas:
+  - {fileID: 9082760650132558314, guid: 744033d0b030c8c499525d13b37294fd, type: 3}
+  - {fileID: 9062640277949728135, guid: 9f399fb7284b7dc47aedaa94e94dae8a, type: 3}
+  - {fileID: 7330970695183997253, guid: bf747281ab487864ea87550c19a2db17, type: 3}
+  - {fileID: 8256656140712013651, guid: 8e154b25fdf558a498993d2b7e45d5c0, type: 3}
+  meuTempo: 0
 --- !u!4 &1569740649
 Transform:
   m_ObjectHideFlags: 0
