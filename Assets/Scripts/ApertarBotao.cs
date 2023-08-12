@@ -21,7 +21,7 @@ public class ApertarBotao : Button
     {
         if (IsPressed())
         {
-            Personagem.GetComponent<Movimento>().MoverD();
+            Personagem.GetComponent<Movimento>().Ultimate();
         }
     }
 }

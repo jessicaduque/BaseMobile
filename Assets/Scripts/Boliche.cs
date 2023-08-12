@@ -21,7 +21,7 @@ public class Boliche : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Pinos")
+        if (collision.gameObject.name == "Personagem_Principal")
         {
             GC.DarPontos(valor);
             Destroy(this.gameObject);

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Movimento : Button
 {
     private Vector2 posInicial = new Vector2(-8f, 0);
-    private float tempo;
+    private float tempoMover;
 
     void Start()
     {
@@ -15,33 +15,31 @@ public class Movimento : Button
 
     void Update()
     {
-        /*
-        tempo += Time.deltaTime;
-        if(tempo > 0.001f && IsPressed())
-        {
-            Mover();
-        }*/
+
     }
 
     public void Mover()
     {
-        // Captura a Posição do Mouse
-        Vector3 destino = Input.mousePosition;
+        tempoMover += Time.deltaTime;
+        if(tempoMover > 0.001f)
+        {
+            // Captura a Posição do Mouse
+            Vector3 destino = Input.mousePosition;
 
-        // Corrigir posição
-        Vector3 desCorri = Camera.main.ScreenToWorldPoint(destino);
+            // Corrigir posição
+            Vector3 desCorri = Camera.main.ScreenToWorldPoint(destino);
 
-        // Destino final corrigido
-        Vector3 dFinal = new Vector3(-8, Mathf.Clamp(desCorri.y, -3.8f, 3.8f), 0);
+            // Destino final corrigido
+            Vector3 dFinal = new Vector3(-8, Mathf.Clamp(desCorri.y, -3.8f, 3.8f), 0);
 
-        // Mover objeto
-        transform.position = Vector3.MoveTowards(transform.position, dFinal, 0.01f);
+            // Mover objeto
+            transform.position = Vector3.MoveTowards(transform.position, dFinal, 0.02f);
 
-        
+        }
     }
 
-    public void MoverD()
+    public void Ultimate()
     {
-        Debug.Log("NYANNN");
+        Debug.Log("Ultimate!!!");
     }
 }
