@@ -21,8 +21,8 @@ public class GerenciadorDeObjetos : MonoBehaviour
         // Cria uma esfera a cada tempo determinado
         if (meuTempo > tempoCriacaoEsfera)
         {
-            float posX = Random.Range(-2, 2.1f);
-            Vector2 novaPos = new Vector3(posX, 3.4f);
+            float posY = Random.Range(-4.2f, 4.3f);
+            Vector2 novaPos = new Vector3(8f, posY);
             int tipoEsfera = Random.Range(0, MinhasEsferas.Count);
             GameObject Bol = Instantiate(MinhasEsferas[tipoEsfera], novaPos, Quaternion.identity);
             Destroy(Bol, 2f);
@@ -37,8 +37,8 @@ public class GerenciadorDeObjetos : MonoBehaviour
         // Cria uma esfera a cada tempo determinado
         if (meuTempo > tempoCriacaoEsfera)
         {
-            float posX = Random.Range(-2, 2.1f);
-            Vector2 novaPos = new Vector3(posX, 3.4f);
+            float posY = Random.Range(-4.2f, 4.3f);
+            Vector2 novaPos = new Vector2(8, posY);
             int esferaEscolhida = 0;
             int tipoEsfera = Random.Range(0, 101);
             if(tipoEsfera < 80)
@@ -58,7 +58,7 @@ public class GerenciadorDeObjetos : MonoBehaviour
                 esferaEscolhida = 3;
             }
             GameObject Bol = Instantiate(MinhasEsferas[esferaEscolhida], novaPos, Quaternion.identity);
-            Destroy(Bol, 2f);
+            Destroy(Bol, 5f);
             meuTempo = 0;
         }
     }
