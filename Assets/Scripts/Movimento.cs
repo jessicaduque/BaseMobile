@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Movimento : MonoBehaviour
+public class Movimento : Button
 {
     private Vector2 posInicial = new Vector2(-8f, 0);
     private float tempo;
@@ -14,30 +15,29 @@ public class Movimento : MonoBehaviour
 
     void Update()
     {
+        /*
         tempo += Time.deltaTime;
-        if(tempo > 0.001f)
+        if(tempo > 0.001f && IsPressed())
         {
             Mover();
-        }
+        }*/
     }
 
-    void Mover()
+    public void Mover()
     {
-        if (Input.GetMouseButton(0))
-        {
-            // Captura a Posição do Mouse
-            Vector3 destino = Input.mousePosition;
+        // Captura a Posição do Mouse
+        Vector3 destino = Input.mousePosition;
 
-            // Corrigir posição
-            Vector3 desCorri = Camera.main.ScreenToWorldPoint(destino);
+        // Corrigir posição
+        Vector3 desCorri = Camera.main.ScreenToWorldPoint(destino);
 
-            // Destino final corrigido
-            Vector3 dFinal = new Vector3(-8, Mathf.Clamp(desCorri.y, -3.8f, 3.8f), 0);
+        // Destino final corrigido
+        Vector3 dFinal = new Vector3(-8, Mathf.Clamp(desCorri.y, -3.8f, 3.8f), 0);
 
-            // Mover objeto
-            transform.position = Vector3.MoveTowards(transform.position, dFinal, 0.01f);
+        // Mover objeto
+        transform.position = Vector3.MoveTowards(transform.position, dFinal, 0.01f);
 
-        }
+        
     }
 
     public void MoverD()

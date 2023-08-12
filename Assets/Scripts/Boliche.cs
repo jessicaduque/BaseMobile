@@ -16,10 +16,7 @@ public class Boliche : MonoBehaviour
     void Update()
     {
         tempo += Time.deltaTime;
-        if (tempo > 0.0001f)
-        {
-            transform.position = new Vector2(transform.position.x - 0.004f, transform.position.y);
-        }
+        transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

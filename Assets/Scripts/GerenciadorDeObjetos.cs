@@ -6,7 +6,7 @@ public class GerenciadorDeObjetos : MonoBehaviour
 {
     public List<GameObject> MinhasEsferas;
     public float meuTempo;
-    public float tempoCriacaoEsfera = 1f;
+    public float tempoCriacaoEsfera = 3f;
 
     void Update()
     {
@@ -45,20 +45,12 @@ public class GerenciadorDeObjetos : MonoBehaviour
             {
                 esferaEscolhida = 0;
             }
-            else if(tipoEsfera < 90)
+            else
             {
                 esferaEscolhida = 1;
             }
-            else if (tipoEsfera < 98)
-            {
-                esferaEscolhida = 2;
-            }
-            else
-            {
-                esferaEscolhida = 3;
-            }
             GameObject Bol = Instantiate(MinhasEsferas[esferaEscolhida], novaPos, Quaternion.identity);
-            Destroy(Bol, 5f);
+            Destroy(Bol, 10f);
             meuTempo = 0;
         }
     }
