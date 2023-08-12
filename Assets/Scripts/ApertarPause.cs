@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ApertarBotao : Button
+public class ApertarPause : Button
 {
-    private GameObject Personagem;
+    private GameControlador GC;
 
     void Start()
     {
-        Personagem = GameObject.FindGameObjectWithTag("Player");
+        GC = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameControlador>();
     }
 
     void Update()
@@ -21,7 +21,7 @@ public class ApertarBotao : Button
     {
         if (IsPressed())
         {
-            Personagem.GetComponent<Movimento>().Ultimate();
+            GC.AbrirMenuPause();
         }
     }
 }

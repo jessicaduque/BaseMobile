@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameControlador : MonoBehaviour
 {
+    public GameObject PausePanel;
+
     private int pontos;
 
     void Start()
@@ -23,6 +25,18 @@ public class GameControlador : MonoBehaviour
     public float MostrarPontos()
     {
         return pontos;
+    }
+
+    public void AbrirMenuPause()
+    {
+        PausePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void FecharMenuPause()
+    {
+        PausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
 }
