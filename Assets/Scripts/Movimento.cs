@@ -20,22 +20,18 @@ public class Movimento : Button
 
     public void Mover()
     {
-        tempoMover += Time.deltaTime;
-        if(tempoMover > 0.001f)
-        {
-            // Captura a Posição do Mouse
-            Vector3 destino = Input.mousePosition;
+        // Captura a Posição do Mouse
+        Vector3 destino = Input.mousePosition;
 
-            // Corrigir posição
-            Vector3 desCorri = Camera.main.ScreenToWorldPoint(destino);
+        // Corrigir posição
+        Vector3 desCorri = Camera.main.ScreenToWorldPoint(destino);
 
-            // Destino final corrigido
-            Vector3 dFinal = new Vector3(-8, Mathf.Clamp(desCorri.y, -3.8f, 3.8f), 0);
+        // Destino final corrigido
+        Vector3 dFinal = new Vector3(-8, Mathf.Clamp(desCorri.y, -3.8f, 3.8f), 0);
 
-            // Mover objeto
-            transform.position = Vector3.MoveTowards(transform.position, dFinal, 0.02f);
-
-        }
+        // Mover objeto
+        transform.position = Vector3.MoveTowards(transform.position, dFinal, 5f * Time.deltaTime);
+        
     }
 
     public void Ultimate()
