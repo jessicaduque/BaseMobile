@@ -4,29 +4,41 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    private float lengthImage, lengthCam, startpos;
-    public Camera cam;
-    public float parallaxEffect;
+    [SerializeField] private float parallaxVel;
+    private float comprimentoX;
+    private float PosAtualX;
+    private Transform cam;
+    [SerializeField] private float tempoParalaxe;
 
-    
+    // Start is called before the first frame update
     void Start()
     {
-        startpos = transform.position.x;
-        lengthCam = cam.orthographicSize * cam.aspect;
-        lengthImage = GetComponent<SpriteRenderer>().bounds.size.x;
+        PosAtualX = transform.position.x;
+        comprimentoX = GetComponent<SpriteRenderer>().bounds.size.x;
+        cam = Camera.main.transform;
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z), parallaxEffect * 10 * Time.deltaTime);
+        MovimentoParalaxe();
     }
 
-    void FixedUpdate()
+    void MovimentoParalaxe()
     {
-        //Debug.Log(Mathf.Abs(startpos - lengthImage / 2) + lengthCam);
-        if(transform.position.x <= -startpos)
+        PosAtualX -= tempoParalaxe * Time.deltaTime;
+        float rePos = cam.transform.position.x * (1 - parallaxVel);
+        float distancia = cam.transform.position.x * parallaxVel;
+
+        transform.position = new Vector3(PosAtualX + distancia, transform.position.y, transform.position.z);
+
+        if (rePos > PosAtualX + comprimentoX)
         {
-            transform.position = new Vector3(startpos, transform.position.y, transform.position.z);
+            PosAtualX += comprimentoX;
+        }
+        else if (rePos < PosAtualX - comprimentoX)
+        {
+            PosAtualX -= comprimentoX;
         }
     }
 }

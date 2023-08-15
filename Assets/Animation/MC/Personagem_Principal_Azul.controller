@@ -28,7 +28,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Personagem_Principal
+  m_Name: Personagem_Principal_Azul
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -64,7 +64,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 937c3b3410be0ae45808e20fa22f7e9c, type: 2}
+  m_Motion: {fileID: 7400000, guid: bab4a76e92584c84882ce460de0a8feb, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

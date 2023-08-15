@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -115,7 +115,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Starry background  - Layer 02 - Shadows_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c88301a0157361249974a3d5ece26e9f
+      internalID: 1659478270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starry background  - Layer 02 - Shadows_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 640
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1909ee28969385d44a9f630749eb07d4
+      internalID: -87881452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starry background  - Layer 02 - Shadows_2
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 640
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e65214e8cde3f64083692b28ba06c13
+      internalID: 1475564265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starry background  - Layer 02 - Shadows_3
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 640
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ca88066d70e12428f16fbe1dccdd41
+      internalID: -195459668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starry background  - Layer 02 - Shadows_4
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 640
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecc290de9a267fb40979f688e1b4162d
+      internalID: -329541639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starry background  - Layer 02 - Shadows_5
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 0
+        width: 640
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e102bcca535671343a98b4d4288b8efc
+      internalID: -2083749594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starry background  - Layer 02 - Shadows_6
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 640
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 458ca10016803684a876a2ed43cbb0fa
+      internalID: 946588763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starry background  - Layer 02 - Shadows_7
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 0
+        width: 640
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c31f51a7976620d4bbab1c74fa119b39
+      internalID: -122476051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starry background  - Layer 02 - Shadows_8
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 0
+        width: 640
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3378cc41ccf2d784fb549061602fd6b9
+      internalID: -1823490906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +315,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Starry background  - Layer 02 - Shadows_4: -329541639
+      Starry background  - Layer 02 - Shadows_6: 946588763
+      Starry background  - Layer 02 - Shadows_7: -122476051
+      Starry background  - Layer 02 - Shadows_5: -2083749594
+      Starry background  - Layer 02 - Shadows_2: 1475564265
+      Starry background  - Layer 02 - Shadows_1: -87881452
+      Starry background  - Layer 02 - Shadows_8: -1823490906
+      Starry background  - Layer 02 - Shadows_3: -195459668
+      Starry background  - Layer 02 - Shadows_0: 1659478270
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
