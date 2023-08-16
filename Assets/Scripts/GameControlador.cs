@@ -10,6 +10,7 @@ public class GameControlador : MonoBehaviour
     public GameObject PausePanel;
     public GameObject StartPanel;
     public GameObject CreditsPanel;
+    enum EstadoJogo {Inicial, CriarFase, Lutar, EscolherPoder, Terra};
 
     private int pontos;
     void Start()
