@@ -3977,8 +3977,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1569740649}
-  - component: {fileID: 1569740648}
   - component: {fileID: 1569740650}
+  - component: {fileID: 1569740651}
   m_Layer: 0
   m_Name: GerenciadorJogo
   m_TagString: GameController
@@ -3986,23 +3986,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1569740648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569740647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9da256c216ce864390173c2468819be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MinhasEsferas:
-  - {fileID: 8221177865688131357, guid: f4eeecf767d1f774598cbcb471f3bf9e, type: 3}
-  - {fileID: 7523852127518831211, guid: a84efa9da5b9e1b43a77522da7a6dbba, type: 3}
-  meuTempo: 0
-  tempoCriacao: 20
 --- !u!4 &1569740649
 Transform:
   m_ObjectHideFlags: 0
@@ -4034,6 +4017,25 @@ MonoBehaviour:
   PausePanel: {fileID: 1529134817}
   StartPanel: {fileID: 598944082}
   CreditsPanel: {fileID: 0}
+  planeta_Image: {fileID: 0}
+  planetas_Sprites: []
+--- !u!114 &1569740651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569740647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9da256c216ce864390173c2468819be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Extras:
+  - {fileID: 8221177865688131357, guid: f4eeecf767d1f774598cbcb471f3bf9e, type: 3}
+  - {fileID: 7523852127518831211, guid: a84efa9da5b9e1b43a77522da7a6dbba, type: 3}
+  meuTempo: 0
+  tempoCriacao: 20
 --- !u!1 &1583841848
 GameObject:
   m_ObjectHideFlags: 0

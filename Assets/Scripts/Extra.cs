@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boliche : MonoBehaviour
+public class Extra : MonoBehaviour
 {
-    public int valor = 0;
+    [SerializeField] int valor;
     private GameControlador GC;
     private float tempo;
 
@@ -23,8 +23,15 @@ public class Boliche : MonoBehaviour
     {
         if (collision.gameObject.name == "Personagem_Principal")
         {
-            GC.DarPontos(valor);
-            Destroy(this.gameObject);
+            if(valor == 1)
+            {
+                GC.GanharEstrela();
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                GC.GameOver();
+            }
         }
     }
 }

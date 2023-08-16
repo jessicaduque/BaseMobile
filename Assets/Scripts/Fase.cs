@@ -8,6 +8,7 @@ public class Fase
     private Sprite planeta_Sprite;
     private GameObject[] inimigos_Possiveis;
     private int max_inimigos;
+
     public Fase(Sprite planeta_Sprite, GameObject[] inimigos_Possiveis, int max_inimigos)
     {
         this.planeta_Sprite = planeta_Sprite;
@@ -20,12 +21,14 @@ public class Fase
     {
         this.planeta_Sprite = planeta_Sprite;
         this.inimigos_Possiveis = inimigos_Possiveis;
+        this.max_inimigos = 6;
     }
 
     // Se fase for gerada sem receber número máximo de inimigos nem inimigos possíveis, significa que é a fase da terra
     public Fase(Sprite planeta_Sprite)
     {
         this.planeta_Sprite = planeta_Sprite;
+        this.max_inimigos = 0;
     }
 
     public bool MoverPlaneta(Image planeta_Image, Vector3 pontoFinal)

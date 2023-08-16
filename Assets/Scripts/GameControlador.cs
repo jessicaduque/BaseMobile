@@ -2,34 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameControlador : MonoBehaviour
 {
-    public GameObject UIPanel;
-    public GameObject PausePanel;
-    public GameObject StartPanel;
-    public GameObject CreditsPanel;
-    enum EstadoJogo {Inicial, CriarFase, Lutar, EscolherPoder, Terra};
+    [SerializeField] GameObject UIPanel;
+    [SerializeField] GameObject PausePanel;
+    [SerializeField] GameObject StartPanel;
+    [SerializeField] GameObject CreditsPanel;
 
-    private int pontos;
+    [SerializeField] Image planeta_Image;
+    [SerializeField] Sprite[] planetas_Sprites;
+    [SerializeField] GameObject[][] inimigos_possiveis;
+
+    enum EstadoJogo {Inicial, CriarFase, Lutar, EscolherPoder, Terra};
+    EstadoJogo estadoAtual;
+
+    private int estrelas = 0;
+
     void Start()
     {
         UIPanel.SetActive(false);
+        estadoAtual = EstadoJogo.Inicial;
     }
 
     void Update()
     {
     }
 
-    public void DarPontos(int valorX)
+    void ControleEstados()
     {
-        pontos += valorX;
+        switch (estadoAtual)
+        {
+            case EstadoJogo.Inicial:
+                break;
+            case EstadoJogo.CriarFase:
+                AleatorizarFase();
+                estadoAtual = EstadoJogo.Lutar;
+                break;
+            case EstadoJogo.Lutar:
+                // Código
+                break;
+            case EstadoJogo.EscolherPoder:
+                // Código
+                break;
+            case EstadoJogo.Terra:
+                // Código
+                break;
+        }
+    }
+
+    void AleatorizarFase()
+    {
+        // Código para escolher fase e determinar dificuldades
+    }
+
+    public void GanharEstrela()
+    {
+        estrelas++;
     }
 
     public float MostrarPontos()
     {
-        return pontos;
+        return estrelas;
     }
 
     public void AbrirMenuPause()
@@ -47,12 +83,18 @@ public class GameControlador : MonoBehaviour
     public void IniciarJogo()
     {
         // Script para iniciar jogo
-        UIPanel.SetActive(true);
         StartPanel.SetActive(false);
+        UIPanel.SetActive(true);
+        estadoAtual = EstadoJogo.CriarFase;
     }
     public void ReiniciarJogo()
     {
         SceneManager.LoadScene(0);
+    }
+    public void GameOver()
+    {
+        // Script para o que ocorre ao perder o jogo
+        Time.timeScale = 0;
     }
 
 }
