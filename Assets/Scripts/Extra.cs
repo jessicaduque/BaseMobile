@@ -23,14 +23,14 @@ public class Extra : MonoBehaviour
     {
         if (collision.gameObject.name == "Personagem_Principal")
         {
-            if(valor == 1)
+            Destroy(this.gameObject);
+            if (valor == 1)
             {
                 GC.GanharEstrela();
-                Destroy(this.gameObject);
             }
             else
             {
-                GC.GameOver();
+                GC.Morrer();
             }
         }
     }

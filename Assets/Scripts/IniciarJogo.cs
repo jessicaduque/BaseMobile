@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class IniciarJogo : Button
 {
     private GameControlador GC;
+    private bool apertado = false;
 
     void Start()
     {
@@ -14,14 +15,21 @@ public class IniciarJogo : Button
 
     void Update()
     {
-        Pressionar();
+        if (apertado)
+        {
+            GC.IniciarJogo();
+        }
+        else
+        {
+            Pressionar();
+        }
     }
 
     void Pressionar()
     {
         if (IsPressed())
         {
-            GC.IniciarJogo();
+            apertado = true;
         }
     }
 }

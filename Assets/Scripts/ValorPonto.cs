@@ -17,6 +17,6 @@ public class ValorPonto : MonoBehaviour
 
     void Update()
     {
-        texto.text = "PONTOS: " + GC.MostrarPontos().ToString(); 
+        texto.text = "PONTOS: " + GC.MostrarEstrelas().ToString(); 
     }
 }

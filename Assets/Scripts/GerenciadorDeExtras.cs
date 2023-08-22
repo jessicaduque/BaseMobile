@@ -7,6 +7,17 @@ public class GerenciadorDeExtras : MonoBehaviour
     [SerializeField] List<GameObject> Extras;
     public float meuTempo;
     public float tempoCriacao = 20f;
+    private GameControlador GC;
+
+    private void Start()
+    {
+        GC = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameControlador>();
+    }
+
+    private void OnEnable()
+    {
+        meuTempo = 0.0f;
+    }
 
     void Update()
     {
@@ -17,11 +28,11 @@ public class GerenciadorDeExtras : MonoBehaviour
     {
         meuTempo += Time.deltaTime;
 
-        // Cria uma esfera a cada tempo determinado
+        // Cria um objeto extra a cada quantidade de tempo determinado
         if (meuTempo > tempoCriacao)
         {
             float posY = Random.Range(-4.2f, 4.3f);
-            Vector2 novaPos = new Vector2(8, posY);
+            Vector2 novaPos = new Vector2(transform.position.x, posY);
             int extraEscolhido = 0;
             int tipoExtra = Random.Range(0, 101);
             if(tipoExtra < 60)

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    [SerializeField] private float parallaxVel;
     private float comprimentoX;
     private float PosAtualX;
     private Transform cam;
     [SerializeField] private float tempoParalaxe;
+    private float auxTempoParalaxe = 0f;
+    [SerializeField] private bool parallaxRodando = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +22,34 @@ public class Parallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovimentoParalaxe();
+        if (parallaxRodando)
+        {
+            if(auxTempoParalaxe >= tempoParalaxe)
+            {
+                MovimentoParalaxe(tempoParalaxe);
+            }
+            else
+            {
+                auxTempoParalaxe += Time.deltaTime;
+                MovimentoParalaxe(auxTempoParalaxe);
+            }
+            
+        }
+        else
+        {
+            if(auxTempoParalaxe > 0)
+            {
+                MovimentoParalaxe(auxTempoParalaxe);
+                auxTempoParalaxe -= Time.deltaTime;
+            }
+        }
     }
 
-    void MovimentoParalaxe()
+    void MovimentoParalaxe(float tp)
     {
-        PosAtualX -= tempoParalaxe * Time.deltaTime;
-        float rePos = cam.transform.position.x * (1 - parallaxVel);
-        float distancia = cam.transform.position.x * parallaxVel;
+        PosAtualX -= tp * Time.deltaTime;
+        float rePos = cam.transform.position.x * (1 - tp);
+        float distancia = cam.transform.position.x * tp;
 
         transform.position = new Vector3(PosAtualX + distancia, transform.position.y, transform.position.z);
 
@@ -40,5 +61,10 @@ public class Parallax : MonoBehaviour
         {
             PosAtualX -= comprimentoX;
         }
+    }
+
+    public void MudarEstadoParallax()
+    {
+        parallaxRodando = !parallaxRodando;
     }
 }

@@ -5,8 +5,7 @@ using UnityEngine;
 public class ShotController : MonoBehaviour
 {
     private Rigidbody2D Rb2D;
-    [SerializeField]
-    private float shotSpeed;
+    [SerializeField] private float shotSpeed;
 
     void Start()
     {
@@ -14,8 +13,9 @@ public class ShotController : MonoBehaviour
         Rb2D.velocity = new Vector2(0, shotSpeed);
     }
 
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Destroy(this.gameObject);
     }
+
 }
