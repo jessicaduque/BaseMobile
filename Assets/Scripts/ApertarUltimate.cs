@@ -21,7 +21,7 @@ public class ApertarUltimate : Button
     {
         if (IsPressed())
         {
-            Personagem.GetComponent<Movimento>().Ultimate();
+            Personagem.GetComponent<Personagem>().Ultimate();
         }
     }
 }

@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class Touch_Para_Movimento : Button
 {
-    Personagem Player;
+    Movimento Player;
 
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Personagem>();
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Movimento>();
     }
 
     void Update()

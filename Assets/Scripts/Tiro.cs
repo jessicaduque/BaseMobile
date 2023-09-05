@@ -9,7 +9,7 @@ public class Tiro : MonoBehaviour
     [SerializeField] protected int dano;
     [SerializeField] protected GameObject efeitoExplosao;
     [SerializeField] public float waitLimitShot;
-    [SerializeField] public Transform[] PontosSaida;
+    [SerializeField] public Vector2[] PontosSaida;
 
     protected void Start()
     {

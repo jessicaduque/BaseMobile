@@ -10,5 +10,4 @@ public class PoderDetails : ScriptableObject
     public PoderDetails poderFraqueza;
     public GameObject poderPrefab;
     public RuntimeAnimatorController protAnimControl;
-    public Tiro tiroScript;
 }

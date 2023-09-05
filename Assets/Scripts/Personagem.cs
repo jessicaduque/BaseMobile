@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Personagem : Button
+public class Personagem : MonoBehaviour
 {
-    private Vector2 posInicial = new Vector2(-8f, 0);
-    private float tempoMover;
-    [SerializeField] PoderDetails poderAtual;
     private float waitTimeShot = 0.0f;
-    private GameObject Player;
+    private RuntimeAnimatorController animController;
+
+    [Header("Específicos poder")]
+    [SerializeField] PoderDetails poderAtual;
+    private GameObject poderPrefab;
+    private float waitLimitShot;
+    private Vector2[] PontosSaida;
 
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
-        transform.position = posInicial;
+        animController = GetComponent<RuntimeAnimatorController>();
+        SetarPoder();
     }
 
     private void Update()
@@ -22,43 +24,33 @@ public class Personagem : Button
         Atacar();
     }
 
-    public void Mover()
-    {
-        // Captura a Posição do Mouse
-        Vector3 destino = Input.mousePosition;
-
-        // Corrigir posição
-        Vector3 desCorri = Camera.main.ScreenToWorldPoint(destino);
-
-        // Destino final corrigido
-        Vector3 dFinal = new Vector3(-8, Mathf.Clamp(desCorri.y, -3.8f, 3.8f), 0);
-
-        // Mover objeto
-        transform.position = Vector3.MoveTowards(transform.position, dFinal, 5f * Time.deltaTime);
-        
-    }
-
     void Atacar()
     {
         waitTimeShot += Time.deltaTime;
 
-        if (waitTimeShot > poderAtual.tiroScript.waitLimitShot)
+        if (waitTimeShot > waitLimitShot)
         {
-            if (Vector2.Distance(Player.transform.position, transform.position) < 6f)
+            foreach (Vector2 saida in PontosSaida)
             {
-                foreach(Transform saida in poderAtual.tiroScript.PontosSaida)
-                {
-                    GameObject tiro = Instantiate(poderAtual.poderPrefab, saida.position, saida.rotation);
-                    Destroy(tiro, 2f);
-                }
-
-                waitTimeShot = 0f;
+                GameObject tiro = Instantiate(poderPrefab, new Vector2(transform.position.x, transform.position.y) + saida, Quaternion.identity);
+                Destroy(tiro, 2f);
             }
+
+            waitTimeShot = 0f;
         }
+    }
+
+    void SetarPoder()
+    {
+        poderPrefab = poderAtual.poderPrefab;
+        waitLimitShot = poderPrefab.GetComponent<Tiro>().waitLimitShot;
+        PontosSaida = poderPrefab.GetComponent<Tiro>().PontosSaida;
+        animController = poderAtual.protAnimControl;
     }
 
     public void Ultimate()
     {
         Debug.Log("Ultimate!!!");
     }
+
 }
