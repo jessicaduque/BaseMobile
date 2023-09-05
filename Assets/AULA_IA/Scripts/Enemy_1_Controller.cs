@@ -2,48 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_1_Controller : MonoBehaviour
+public class Enemy_1_Controller : Enemies
 {
     private Rigidbody2D rb2d;
-    [SerializeField] private float speed = 3f;
-
-    [Header("Shot Variables")]
-    [SerializeField] private GameObject Enemy1ShotPrefab;
-    [SerializeField] private Transform FirePointMiddle;
 
     [SerializeField] private float limiteEsquerdaX;
     [SerializeField] private float limiteDireitaX;
 
-    private float waitTimeShot = 0f;
-    private float waitLimitShot = 0.1f;
     private float waitTimeMove = 0f;
     private float waitLimitMove = 0f;
 
+
     void Start()
     {
+        base.Start();
         rb2d = GetComponent<Rigidbody2D>();
-        rb2d.velocity = new Vector2(speed, 0f);
+        //rb2d.velocity = new Vector2(speed, 0f);
+        rb2d.velocity = new Vector2(0f, -speed);
     }
 
     void Update()
     {
-        Atirar(FirePointMiddle);
-        TrocarLado();
+        this.Atirar(FirePointMiddle);
+        //TrocarLado();
     }
-    
-    void Atirar(Transform PontoSaida)
-    {
-        waitTimeShot += Time.deltaTime;
 
-        if(waitTimeShot > waitLimitShot)
+   public override void Atirar(Transform PontoSaida)
+   {
+        base.Atirar(PontoSaida);
+        if (waitTimeShot == 0)
         {
-            GameObject tiro = Instantiate(Enemy1ShotPrefab, PontoSaida.position, PontoSaida.rotation);
-            Destroy(tiro, 2f);
             waitLimitShot = Random.Range(0.2f, 0.8f);
-            waitTimeShot = 0f;
         }
-    }
-
+   }
+    /*
     void TrocarLado()
     {
         waitTimeMove += Time.deltaTime;
@@ -61,5 +53,5 @@ public class Enemy_1_Controller : MonoBehaviour
             }
             waitTimeMove = 0f;
         }
-    }
+    }*/
 }

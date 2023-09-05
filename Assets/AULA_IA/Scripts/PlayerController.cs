@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform FirePointLeft;
     [SerializeField] private bool isPowerUp;
 
+    [SerializeField] private int health;
 
     private float tempoDelay;
     private float shotTime = 0f;
@@ -61,6 +62,11 @@ public class PlayerController : MonoBehaviour
     {
         GameObject tiro = Instantiate(PlayerShotPrefab, PontoSaida.position, PontoSaida.rotation);
         Destroy(tiro, 2f);
+    }
+
+    public void PlayerDamage(int damage)
+    {
+        health -= damage;
     }
 
 }

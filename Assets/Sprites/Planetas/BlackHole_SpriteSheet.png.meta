@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 156
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1201,13 +1201,13 @@ TextureImporter:
       BlackHole_SpriteSheet_11: -794511358
       BlackHole_SpriteSheet_46: -13747631
       BlackHole_SpriteSheet_25: 254878387
+      BlackHole_SpriteSheet_42: -451698552
       BlackHole_SpriteSheet_34: -485377304
-      BlackHole_SpriteSheet_40: -1068796607
       BlackHole_SpriteSheet_27: 1460190922
       BlackHole_SpriteSheet_45: 1800978458
-      BlackHole_SpriteSheet_14: -615068231
+      BlackHole_SpriteSheet_40: -1068796607
       BlackHole_SpriteSheet_2: -643466117
-      BlackHole_SpriteSheet_42: -451698552
+      BlackHole_SpriteSheet_14: -615068231
       BlackHole_SpriteSheet_12: -2040650787
       BlackHole_SpriteSheet_9: 1840232853
       BlackHole_SpriteSheet_21: -640944903

@@ -18,9 +18,11 @@ public class GameControlador : MonoBehaviour
     [SerializeField] GameObject CreditsPanel;
 
     [Header("Elementos de uma fase")]
+    [SerializeField] FaseDetails[] fases;
+    [SerializeField] Fase fasePresente;
     [SerializeField] GameObject planeta;
-    [SerializeField] RuntimeAnimatorController[] planetas_Animadores;
-    [SerializeField] GameObject[][] inimigos_possiveis;
+
+    private Banco meuBanco;
 
     enum EstadoJogo { Inicial, CriarFase, Lutar, EscolherPoder, Terra, Morte };
     EstadoJogo estadoAtual;
@@ -30,6 +32,8 @@ public class GameControlador : MonoBehaviour
     private bool chanceExtra = true;
     private bool fadeTerminado = false;
 
+    private int numeroFase = 0;
+
     // Para mover o planeta
     private Vector2 limiteXPlaneta = new Vector2(15.5f, 0);
     private Vector2 paradaXPlaneta = new Vector2(7.1f, 0);
@@ -38,6 +42,7 @@ public class GameControlador : MonoBehaviour
 
     void Start()
     {
+        meuBanco = GetComponent<Banco>();
         UIPanel.SetActive(false);
         estadoAtual = EstadoJogo.Inicial;
     }
@@ -54,13 +59,13 @@ public class GameControlador : MonoBehaviour
             case EstadoJogo.Inicial:
                 break;
             case EstadoJogo.CriarFase:
+                numeroFase++;
                 fadeTerminado = false;
                 //AleatorizarFase();
                 GetComponent<GerenciadorDeExtras>().enabled = true;
                 break;
             case EstadoJogo.Lutar:
                 movendoPlaneta = false;
-                Debug.Log("aqui");
                 // Código
                 break;
             case EstadoJogo.EscolherPoder:
@@ -84,9 +89,8 @@ public class GameControlador : MonoBehaviour
 
     void AleatorizarFase()
     {
-        // Não inclui o 0 por este ser a Terra
-        int fase = Random.Range(1, 4);
-        planeta.GetComponent<Animator>().runtimeAnimatorController = planetas_Animadores[fase];
+        fasePresente = new Fase(fases[Random.Range(1, fases.Length)], numeroFase * 2);
+
     }
 
     void MovendoPlaneta()
@@ -121,10 +125,12 @@ public class GameControlador : MonoBehaviour
                 {
                     moverPlanetaSpeed = 0;
                     estadoAtual = EstadoJogo.Lutar;
+                    MudarEstadoParallax();
                     MudancaEstado();
                 }
                 if (Vector2.Distance(planeta.transform.position, paradaXPlaneta) < 2)
                 {
+                    planeta.GetComponent<Animator>().speed -= Time.deltaTime * 0.4f;
                     moverPlanetaSpeed -= Time.deltaTime;
                     if(moverPlanetaSpeed <= 0)
                     {
@@ -140,6 +146,14 @@ public class GameControlador : MonoBehaviour
         }
 
         
+    }
+
+    void MudarEstadoParallax()
+    {
+        for (int i = 0; i < fundos.Length; i++)
+        {
+            fundos[i].GetComponent<Parallax>().MudarEstadoParallax();
+        }
     }
 
     public void GanharEstrela()
@@ -206,10 +220,7 @@ public class GameControlador : MonoBehaviour
             UIPanel.SetActive(true);
             UIPanel.GetComponent<Fade>().FazerFadeIn();
             movendoPlaneta = true;
-            for (int i = 0; i < fundos.Length; i++)
-            {
-                fundos[i].GetComponent<Parallax>().MudarEstadoParallax();
-            }
+            MudarEstadoParallax();
             StartPanel.SetActive(false);
         }
     }

@@ -174,6 +174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotSpeed: 10
+  dano: 2
+  efeitoExplosao: {fileID: 9089085763811991992, guid: ff7ed9f8c1281994989397cb2a6ee93e, type: 3}
 --- !u!70 &2492108510451580830
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -184,7 +186,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.004173845, y: 0.0083476305}
