@@ -646,7 +646,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 320
+        y: 321
         width: 64
         height: 64
       alignment: 9
@@ -1366,7 +1366,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MAGE - Axul_55: 419785361
+      MAGE - Axul_50: 1848975446
       MAGE - Axul_20: 1399808158
       MAGE - Axul_5: 676686087
       MAGE - Axul_25: -278028083
@@ -1390,18 +1390,18 @@ TextureImporter:
       MAGE - Axul_42: 1184650881
       MAGE - Axul_56: 819880937
       MAGE - Axul_39: 1567507739
-      MAGE - Axul_27: -1718174007
       MAGE - Axul_41: -123965761
+      MAGE - Axul_8: -1246559356
       MAGE - Axul_13: -1101984357
       MAGE - Axul_26: -600244018
       MAGE - Axul_2: 1023764325
       MAGE - Axul_33: -463494722
       MAGE - Axul_30: 2053745647
       MAGE - Axul_22: 1860634773
-      MAGE - Axul_8: -1246559356
       MAGE - Axul_48: 717369220
       MAGE - Axul_23: -889794521
       MAGE - Axul_38: 528145940
+      MAGE - Axul_27: -1718174007
       MAGE - Axul_15: -558963471
       MAGE - Axul_28: 1981736992
       MAGE - Axul_45: -1163451273
@@ -1420,10 +1420,10 @@ TextureImporter:
       MAGE - Axul_53: 2113288029
       MAGE - Axul_35: -885516713
       MAGE - Axul_44: -841453160
+      MAGE - Axul_18: 742837773
       MAGE - Axul_0: 1561938502
       MAGE - Axul_10: -1178930766
-      MAGE - Axul_50: 1848975446
-      MAGE - Axul_18: 742837773
+      MAGE - Axul_55: 419785361
       MAGE - Axul_19: -1735542876
   spritePackingTag: 
   pSDRemoveMatte: 0

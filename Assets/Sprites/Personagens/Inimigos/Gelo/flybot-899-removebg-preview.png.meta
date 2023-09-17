@@ -120,9 +120,9 @@ TextureImporter:
       name: flybot-899-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 97
-        width: 29
+        width: 25
         height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -143,10 +143,10 @@ TextureImporter:
         serializedVersion: 2
         x: 29
         y: 97
-        width: 29
+        width: 25
         height: 39
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,9 +162,9 @@ TextureImporter:
       name: flybot-899-removebg-preview_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 6
         y: 40
-        width: 29
+        width: 19
         height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -183,9 +183,9 @@ TextureImporter:
       name: flybot-899-removebg-preview_3
       rect:
         serializedVersion: 2
-        x: 29
+        x: 32
         y: 40
-        width: 29
+        width: 19
         height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -204,9 +204,9 @@ TextureImporter:
       name: flybot-899-removebg-preview_4
       rect:
         serializedVersion: 2
-        x: 15
+        x: 18
         y: 0
-        width: 29
+        width: 24
         height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

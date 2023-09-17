@@ -45,7 +45,7 @@ TagManager:
   - name: PlayerShot
     uniqueID: 368745955
     locked: 0
-  - name: Player
+  - name: Personagens
     uniqueID: 811929973
     locked: 0
   - name: Efeitos

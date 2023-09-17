@@ -13,9 +13,5 @@ public class Enemy_2_Controller : Enemies
         rb2d.velocity = new Vector2(0f, -speed);
     }
 
-    void Update()
-    {
-        base.Atirar(this.FirePointMiddle);
-    }
 
 }

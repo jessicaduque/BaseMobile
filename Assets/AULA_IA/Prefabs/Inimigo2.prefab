@@ -98,8 +98,9 @@ MonoBehaviour:
   speed: 1
   enemyHealth: 5
   efeitoExplosao: {fileID: 9089085763811991992, guid: 02148f692b9592a4f98898b608b259c8, type: 3}
-  waitLimitShot: 0.9
+  waitLimitShot: 1.5
   ShotPrefab: {fileID: 305621118345692128, guid: 19c9618cfe066f94ea6ca1db932e9061, type: 3}
+  Player: {fileID: 0}
   FirePointMiddle: {fileID: 4138982264477407254}
 --- !u!1 &4138982264477407255
 GameObject:

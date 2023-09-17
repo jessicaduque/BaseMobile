@@ -6,6 +6,7 @@ public class Enemy_1_Controller : Enemies
 {
     private Rigidbody2D rb2d;
 
+    [Header("Limites")]
     [SerializeField] private float limiteEsquerdaX;
     [SerializeField] private float limiteDireitaX;
 
@@ -17,17 +18,17 @@ public class Enemy_1_Controller : Enemies
     {
         base.Start();
         rb2d = GetComponent<Rigidbody2D>();
-        //rb2d.velocity = new Vector2(speed, 0f);
-        rb2d.velocity = new Vector2(0f, -speed);
+        rb2d.velocity = new Vector2(speed, 0f);
     }
 
-    void Update()
+
+    private void Update()
     {
-        this.Atirar(FirePointMiddle);
-        //TrocarLado();
+        base.Update();
+        TrocarLado();
     }
 
-   public override void Atirar(Transform PontoSaida)
+    public override void Atirar(Transform PontoSaida)
    {
         base.Atirar(PontoSaida);
         if (waitTimeShot == 0)
@@ -35,7 +36,7 @@ public class Enemy_1_Controller : Enemies
             waitLimitShot = Random.Range(0.2f, 0.8f);
         }
    }
-    /*
+    
     void TrocarLado()
     {
         waitTimeMove += Time.deltaTime;
@@ -53,5 +54,5 @@ public class Enemy_1_Controller : Enemies
             }
             waitTimeMove = 0f;
         }
-    }*/
+    }
 }

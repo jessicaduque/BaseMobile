@@ -14,7 +14,7 @@ public class Tiro : MonoBehaviour
     protected void Start()
     {
         Rb2D = GetComponent<Rigidbody2D>();
-        Rb2D.velocity = new Vector2(0, shotSpeed);
+        Rb2D.velocity = new Vector2(shotSpeed, 0);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,8 +26,9 @@ public class Tiro : MonoBehaviour
         {
             other.gameObject.GetComponent<Enemies>().ReceberDano(dano);
         }
-        //GameObject explosao = Instantiate(efeitoExplosao, other.gameObject.transform.position, Quaternion.identity);
+        GameObject explosao = Instantiate(efeitoExplosao, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
+
     }
 
 }

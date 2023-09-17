@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class ShotInimigo2 : ShotController
 {
-    private Transform PlayerPos;
-
     void Start()
     {
-        PlayerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        Player = GameObject.FindGameObjectWithTag("Player");
         Rb2D = GetComponent<Rigidbody2D>();
-        Vector2 vel = PlayerPos.position;
-        vel.Normalize();
-        Rb2D.velocity = vel * 3f;
+        if (Player != null)
+        {
+            Vector2 vel = (Player.transform.position - transform.position).normalized;
+            
+            float angle = Mathf.Atan2(vel.y, vel.x) * Mathf.Rad2Deg;
+
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            Rb2D.velocity = vel * shotSpeed;
+        }
+        else
+        {
+            Rb2D.velocity = new Vector2(0, -1);
+        }
     }
 }

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class Fase
 {
-    private RuntimeAnimatorController animator;
-    private GameObject[] inimigos_Possiveis;
-    private int max_inimigos;
+    public RuntimeAnimatorController animator;
+    public GameObject[] inimigos_Possiveis;
+    public int max_inimigos;
 
     public Fase(FaseDetails fase, int max)
     {

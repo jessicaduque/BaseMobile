@@ -15,18 +15,28 @@ public class Enemies : MonoBehaviour
     [Header("Shot Variables")]
     [SerializeField] protected Transform FirePointMiddle;
 
+    bool visible;
+
     protected void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    protected void Update()
+    {
+        visible = GetComponentInChildren<SpriteRenderer>().isVisible;
+        Atirar(FirePointMiddle);
+    }
 
     public void ReceberDano(int dano)
     {
-        enemyHealth -= dano;
-        if(enemyHealth <= 0)
+        if (visible)
         {
-            Morrer();
+            enemyHealth -= dano;
+            if (enemyHealth <= 0)
+            {
+                Morrer();
+            }
         }
     }
 
@@ -38,18 +48,19 @@ public class Enemies : MonoBehaviour
 
     public virtual void Atirar(Transform PontoSaida)
     {
-        waitTimeShot += Time.deltaTime;
+        
 
-        if (waitTimeShot > waitLimitShot)
+        if (visible)
         {
-            if (Vector2.Distance(Player.transform.position, transform.position) < 6f)
+            waitTimeShot += Time.deltaTime;
+
+            if (waitTimeShot > waitLimitShot)
             {
                 GameObject tiro = Instantiate(ShotPrefab, PontoSaida.position, PontoSaida.rotation);
-                Destroy(tiro, 2f);
 
                 waitTimeShot = 0f;
+                
             }
         }
-
     }
 }

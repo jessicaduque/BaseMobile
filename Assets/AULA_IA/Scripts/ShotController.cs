@@ -5,9 +5,10 @@ using UnityEngine;
 public class ShotController : MonoBehaviour
 {
     protected Rigidbody2D Rb2D;
-    [SerializeField] private float shotSpeed;
+    [SerializeField] protected float shotSpeed;
     [SerializeField] private int dano;
     [SerializeField] private GameObject efeitoExplosao;
+    protected GameObject Player;
 
     void Start()
     {

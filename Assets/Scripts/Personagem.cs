@@ -12,16 +12,27 @@ public class Personagem : MonoBehaviour
     private GameObject poderPrefab;
     private float waitLimitShot;
     private Vector2[] PontosSaida;
+    
+    [Header("Ultimate")]
+    private float ultimatePoints = 0;
+    private float ultimateMaxPoints = 50;
+    private bool ultimateLiberado = false;
+
+    private bool podeAtacar;
 
     void Start()
     {
         animController = GetComponent<RuntimeAnimatorController>();
         SetarPoder();
+        podeAtacar = false;
     }
 
     private void Update()
     {
-        Atacar();
+        if (podeAtacar)
+        {
+            Atacar();
+        }
     }
 
     void Atacar()
@@ -33,7 +44,6 @@ public class Personagem : MonoBehaviour
             foreach (Vector2 saida in PontosSaida)
             {
                 GameObject tiro = Instantiate(poderPrefab, new Vector2(transform.position.x, transform.position.y) + saida, Quaternion.identity);
-                Destroy(tiro, 2f);
             }
 
             waitTimeShot = 0f;
@@ -48,9 +58,33 @@ public class Personagem : MonoBehaviour
         animController = poderAtual.protAnimControl;
     }
 
+    public void AumentarUltimate(float pontos)
+    {
+        ultimatePoints += pontos;
+
+        // Atualizar UI ultimate
+
+        if (ultimatePoints > ultimateMaxPoints)
+        {
+            ultimatePoints = ultimateMaxPoints;
+            ultimateLiberado = true;
+        }
+    }
+
+    public void PermitirAtacar()
+    {
+        podeAtacar = true;
+    }
+
     public void Ultimate()
     {
-        Debug.Log("Ultimate!!!");
+        if (ultimateLiberado)
+        {
+            Debug.Log("Ultimate!!!");
+            ultimatePoints = 0;
+            // Atualizar UI ultimate
+            ultimateLiberado = false;
+        }
     }
 
 }
