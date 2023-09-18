@@ -17,6 +17,11 @@ public class Banco : Singleton<Banco>
     private bool barreiraContraMeteoros = false;
     private bool maiorChanceAsEstre = false;
 
+    private new void Awake()
+    {
+
+    }
+
     private bool Comprar(int valor)
     {
         if (dinheiro >= valor)

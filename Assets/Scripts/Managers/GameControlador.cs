@@ -1,41 +1,35 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using Utils.Singleton;
 
 
-public class GameControlador : MonoBehaviour
+public class GameControlador : Singleton<GameControlador>
 {
-    [Header("Fundo Parallax")]
-    [SerializeField] private GameObject[] fundos;
-
-    [Header("Panels")]
-    [SerializeField] GameObject UIPanel;
-    [SerializeField] GameObject PausePanel;
-    [SerializeField] GameObject ChancePanel;
-    [SerializeField] GameObject StartPanel;
-    [SerializeField] GameObject CreditsPanel;
-
     [Header("Elementos de uma fase")]
-    [SerializeField] FaseDetails[] fases;
-    [SerializeField] Fase fasePresente;
+    private List<FaseDetails> fases;
+    private FaseDetails faseAtual;
     [SerializeField] GameObject planeta;
     private RuntimeAnimatorController planetaAnim;
 
-    private Banco meuBanco;
+
+    private bool chanceExtra = true;
 
     [Header("Player")]
     private Movimento PlayerMov;
     private Personagem PlayerContr;
 
-    enum EstadoJogo { Inicial, CriarFase, Lutar, EscolherPoder, Terra, Morte };
     EstadoJogo estadoAtual;
     
+    [Header("Banco")]
+    private Banco meuBanco;
     private int estrelas = 0;
     private int vidas = 1;
-    private bool chanceExtra = true;
+    private bool podeReviver = true;
     private bool fadeTerminado = false;
+
+    [Header("Controle UI")]
+    private UIController controleUI;
 
     private int numeroFase = 0;
 
@@ -47,12 +41,19 @@ public class GameControlador : MonoBehaviour
 
     void Start()
     {
+        meuBanco = Banco.I;
+        controleUI = UIController.I;
+
+        fases = FaseList.Instance.GetFasesSemTerra();
         planetaAnim = planeta.GetComponent<RuntimeAnimatorController>();
-        meuBanco = GetComponent<Banco>();
-        UIPanel.SetActive(false);
         estadoAtual = EstadoJogo.Inicial;
         PlayerMov = GameObject.FindGameObjectWithTag("Player").GetComponent<Movimento>();
         PlayerContr = GameObject.FindGameObjectWithTag("Player").GetComponent<Personagem>();
+    }
+
+    private new void Awake()
+    {
+        
     }
 
     void Update()
@@ -65,6 +66,9 @@ public class GameControlador : MonoBehaviour
         switch (estadoAtual)
         {
             case EstadoJogo.Inicial:
+                movendoPlaneta = true;
+                PlayerMov.AnimatateMoveSideways();
+                StartCoroutine(PlayerMov.MoverParaX());
                 break;
             case EstadoJogo.CriarFase:
                 numeroFase++;
@@ -92,17 +96,17 @@ public class GameControlador : MonoBehaviour
         }
     }
 
-    void MudancaEstado()
+    public void SetEstadoJogo(EstadoJogo estado)
     {
+        estadoAtual = estado;
         ControleEstados();
     }
 
     void AleatorizarFase()
     {
-        fasePresente = new Fase(fases[Random.Range(0, fases.Length)], numeroFase * 2);
-        planetaAnim = fasePresente.animator;
+        faseAtual = fases[Random.Range(0, fases.Count)];
+        planetaAnim = faseAtual.faseAnimControl;
         GerarInimgigos();
-
     }
 
     void GerarInimgigos()
@@ -120,8 +124,7 @@ public class GameControlador : MonoBehaviour
                 if (planeta.transform.position.x <= -limiteXPlaneta.x)
                 {
                     planeta.transform.position = limiteXPlaneta;
-                    estadoAtual = EstadoJogo.CriarFase;
-                    MudancaEstado();
+                    SetEstadoJogo(EstadoJogo.CriarFase);
                 }
                 if (moverPlanetaSpeed >= 2f)
                 {
@@ -141,9 +144,8 @@ public class GameControlador : MonoBehaviour
                 if (planeta.transform.position.x <= paradaXPlaneta.x)
                 {
                     moverPlanetaSpeed = 0;
-                    estadoAtual = EstadoJogo.Lutar;
-                    MudarEstadoParallax();
-                    MudancaEstado();
+                    controleUI.MudarEstadoParallax();
+                    SetEstadoJogo(EstadoJogo.Lutar);
                 }
                 if (Vector2.Distance(planeta.transform.position, paradaXPlaneta) < 2)
                 {
@@ -165,14 +167,6 @@ public class GameControlador : MonoBehaviour
         
     }
 
-    void MudarEstadoParallax()
-    {
-        for (int i = 0; i < fundos.Length; i++)
-        {
-            fundos[i]?.GetComponent<Parallax>().MudarEstadoParallax();
-        }
-    }
-
     public void GanharEstrela()
     {
         estrelas++;
@@ -191,7 +185,7 @@ public class GameControlador : MonoBehaviour
         {
             if (chanceExtra)
             {
-                ChancePanel.SetActive(true);
+                controleUI.AbrirChanceExtra();
                 chanceExtra = false;
                 // Código para rodar vídeo da chance extra
             }
@@ -205,44 +199,17 @@ public class GameControlador : MonoBehaviour
     {
         vidas = 1;
         Time.timeScale = 1;
-        estadoAtual = EstadoJogo.Lutar;
-        MudancaEstado();
+        SetEstadoJogo(EstadoJogo.Lutar);
     }
 
 
     public void GameOver()
     {
         // Script para o que ocorre ao perder o jogo
-        estadoAtual = EstadoJogo.Morte;
-        MudancaEstado();
+        SetEstadoJogo(EstadoJogo.Morte);
     }
 
-    public void AbrirMenuPause()
-    {
-        PausePanel.SetActive(true);
-        Time.timeScale = 0;
-    }
-
-    public void FecharMenuPause()
-    {
-        PausePanel.SetActive(false);
-        Time.timeScale = 1;
-    }
-
-    public void IniciarJogo()
-    {
-        StartPanel.GetComponent<Fade>().FazerFadeOut();
-        if (fadeTerminado)
-        {
-            UIPanel.SetActive(true);
-            UIPanel.GetComponent<Fade>().FazerFadeIn();
-            movendoPlaneta = true;
-            PlayerMov.AnimatateMoveSideways();
-            StartCoroutine(PlayerMov.MoverParaX());
-            MudarEstadoParallax();
-            StartPanel.SetActive(false);
-        }
-    }
+   
     public void ReiniciarJogo()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

@@ -6,7 +6,7 @@ using UnityEngine;
 public class FaseDetails : ScriptableObject
 {
     public int faseID;
-    public string faseNome;
+    public NomePlaneta faseNome;
     public RuntimeAnimatorController faseAnimControl;
     public PoderDetails fasePoder;
     public GameObject[] faseInimiPossiveis;

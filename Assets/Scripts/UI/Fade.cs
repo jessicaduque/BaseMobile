@@ -1,71 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Utils.Singleton;
 
-public class Fade : MonoBehaviour
+public class Fade : Singleton<Fade>
 {
-    [SerializeField] float timeToFade = 2f;
-    private bool fadeIn = false;
-    private bool fadeOut = false;
-    private CanvasGroup cg;
-    private GameControlador GC;
-
-    private void Start()
+    public IEnumerator FadeIn(CanvasGroup cg, float timeToFade = 2f)
     {
-        GC = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameControlador>();
-        cg = GetComponent<CanvasGroup>();
-    }
-
-    private void Update()
-    {
-        if (fadeOut)
-        {
-            FadeOut();
-        }
-        else if (fadeIn)
-        {
-            FadeIn();
-        }
-
-    }
-    void FadeIn()
-    {
-        if (cg.alpha < 1)
+        cg.gameObject.SetActive(true);
+        while (cg.alpha < 1)
         {
             cg.alpha += timeToFade * Time.deltaTime;
-        }
-        else
-        {
-            FadeTerminado();
-            fadeIn = false;
+            yield return null;
         }
     }
 
-    void FadeOut()
+    public IEnumerator FadeOut(CanvasGroup cg, float timeToFade = 2f)
     {
-        if (cg.alpha > 0)
+        while (cg.alpha > 1)
         {
             cg.alpha -= timeToFade * Time.deltaTime;
+            yield return false;
         }
-        else
-        {
-            FadeTerminado();
-        }
-    }
-
-    public void FazerFadeOut()
-    {
-        fadeIn = false;
-        fadeOut = true;
-    }
-    public void FazerFadeIn()
-    {
-        fadeIn = true;
-        fadeOut = false;
-    }
-
-    void FadeTerminado()
-    {
-        GC.ContinuarProcesso();
+        cg.gameObject.SetActive(false);
     }
 }

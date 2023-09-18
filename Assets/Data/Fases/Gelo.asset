@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gelo
   m_EditorClassIdentifier: 
   faseID: 1
-  faseNome: Gelo
+  faseNome: 1
   faseAnimControl: {fileID: 9100000, guid: f97a64df4d992f34e9c982fbd4e30d1c, type: 2}
   fasePoder: {fileID: 11400000, guid: 238ff66efd43762498afc389eee13fac, type: 2}
   faseInimiPossiveis:

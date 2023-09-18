@@ -10,7 +10,7 @@ public class Extra : MonoBehaviour
 
     void Start()
     {
-        GC = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameControlador>();
+        GC = GameControlador.I;
     }
 
     void Update()
